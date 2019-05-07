@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :sections
   resources :stories
   resources :submissions
-  resources :users
+  get '/users/register', to: 'users#new'
+  get '/users/login', to: 'users#login'
+  resources :users, only: [ :create, :destroy]
   resources :votes
   resources :sessions
+
+
 end
