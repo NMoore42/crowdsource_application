@@ -31,5 +31,5 @@ end
 private
 
 def submission_params
-  params.require(:submission).permit(:subtitle, :summary, :content)
+  params.require(:submission).permit(:subtitle, :summary, :content, :user_id, :section_id)
 end
