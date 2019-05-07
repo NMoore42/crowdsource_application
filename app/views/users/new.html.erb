@@ -1,0 +1,18 @@
+<h1>Please Create Your Account!</h1>
+
+<% if @errors %>
+  <% @errors.each do |e| %>
+    <p><%= e %></p>
+  <% end %>
+<% end %>
+
+<% if current_user %>
+  <p>Logged in as <%= current_user.username %></p>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.text_field :username, placeholder: "Username" %><br><br>
+  <%= f.password_field :password, placeholder: "Password" %><br><br>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %><br><br>
+  <%= f.submit %>
+<% end %>
