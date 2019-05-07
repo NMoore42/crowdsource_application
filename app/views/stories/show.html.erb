@@ -1,0 +1,13 @@
+<h1><%= @story.title %></h1>
+<h3> Synopsis: <%= @story.synopsis %></h3>
+<h3> Notes: <%= @story.additional_detail %></h3>
+<p>
+Followers: <%= @story.followers.count %>
+<br>
+<br>
+<% @story.sections.each do |section| %>
+<li> <%=link_to section.title, section_path(section) %> </li>
+<% end %>
+
+
+</p>
