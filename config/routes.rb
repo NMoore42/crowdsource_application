@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :follows
   resources :sections
   resources :stories
-  resources :submissions
+  resources :submissions, only: [:index, :show, :new]
   resources :users
   resources :votes
   resources :sessions
