@@ -1,0 +1,18 @@
+<h1>Create A New Story</h1>
+
+<%= form_for @story do |f| %>
+  <%= f.label 'Title' %>
+  <%= f.text_field :title %><br>
+  <br>
+  <%= f.label 'Synopsis' %>
+  <%= f.text_area :synopsis %><br>
+  <br>
+  <%= f.label 'Notes' %>
+  <%= f.text_area :additional_detail %><br>
+  <br>
+  <%= f.submit 'Submit' %>
+<% end %>
+<br>
+<br>
+
+<%= link_to 'Cancel', stories_path %>
