@@ -1,0 +1,29 @@
+<% if @errors %>
+<% @errors.each do |error|  %>
+<%= error %>
+<% end %>
+<% end %>
+
+<style media="screen">
+  .field_with_errors {
+    border: 2px red solid;
+  }
+</style>
+
+<h1>New Submission!</h1>
+<%= link_to "Back to Submissions", submissions_path %>
+<%= form_for @submission do |f| %>
+  <p><%= f.label "Subtitle"%>
+  <%= f.text_field :subtitle %></p><br>
+  <p><%= f.label :user_id %>
+  <%= f.collection_select :user_id, User.all, :id, :name  %></p><br>
+  <p><%= f.label :section_id %>
+  <%= f.collection_select :section_id, Section.all, :id, :subtitle %></p><br>
+  <p><%= f.label "Summary" %>
+  <%= f.text_field :summary %></p><br>
+  <p><%= f.label "Content" %>
+  <%= f.text_area :content %></p><br>
+  <%= f.submit %>
+
+<% end %>
+<br>
