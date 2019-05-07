@@ -3,15 +3,16 @@ Rails.application.routes.draw do
 
   #As you work through, please modify your resources to match only thoses needed:
 
+  get '/register', to: 'users#new', as: 'register'
+  get '/login', to: 'sessions#new', as: 'login'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
   resources :follows
   resources :sections
   resources :stories
   resources :submissions
-  get '/users/register', to: 'users#new'
-  get '/users/login', to: 'users#login'
-  resources :users, only: [ :create, :destroy]
+  resources :users, only: [ :create, :destroy, :show]
   resources :votes
-  resources :sessions
+  resources :sessions, only: [:create, :destroy]
 
 
 end

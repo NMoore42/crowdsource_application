@@ -1,1 +1,9 @@
 <h1>Individual User Page</h1>
+<br>
+<h2>This is the user page for: <%= @user.username %></h2>
+<%= button_to "Log Out", { action: "destroy", controller: "sessions" }, method: "delete" %>
+<br>
+<br>
+<br>
+<br>
+<%= button_to "Delete User", { action: "destroy", controller: "users" }, method: "delete", data: { confirm: "Are you sure you'd like to delete your profile?"} %>
