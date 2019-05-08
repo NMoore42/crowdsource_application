@@ -1,0 +1,6 @@
+<% @section.submissions.top_submissions.each do |ts| %>
+<li><%= link_to ts.title, submission_path(ts) %><br>
+  <%= ts.synopsis %> <br>
+  Votes: <%= ts.votes.count  %>
+</li>
+<% end %>

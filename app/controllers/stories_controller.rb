@@ -17,18 +17,26 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-<<<<<<< HEAD
-    if @story.save
-=======
+
     if @story.valid?
       @story.save
       @section = Section.create(story_id: @story.id, published?: false)
->>>>>>> jake_day3
       redirect_to @story
     else
       render :new
     end
   end
+
+  # def new_section
+  #   until @story.published? == true
+  #     if @story.sections.last.published? == true
+  #       @section = Section.create(story_id: @story.id, published?: false)
+  #     end
+  #   end
+  # end
+
+
+
 
 
   private
@@ -41,4 +49,12 @@ class StoriesController < ApplicationController
   def require_login
     redirect_to login_path unless session.include? :user_id
   end
+
+  # def new_section
+  #   until @story.published? == true
+  #     if @story.sections.last.published? == true
+  #       @section = Section.create(story_id: @story.id, published?: false)
+  #     end
+  #   end
+  # end
 end

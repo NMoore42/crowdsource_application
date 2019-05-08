@@ -1,6 +1,11 @@
 <h1>HiveWrite</h1>
+
+
+
+
+<h3></h3>
 <h3>Top Stories</h3>
-<% @stories.each do |story| %>
+<% @stories.top_stories do |story| %>
 <li><%= link_to story.title, story_path(story) %> <br>
 <%= story.synopsis %>
 </li>
