@@ -8,6 +8,9 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(vote_params)
     if @vote.save
+      if winning_submission?
+        cannonize_submission
+      end
       #redirect_to !!!! Need page route here !!!!
     else
       redirect_to login_path

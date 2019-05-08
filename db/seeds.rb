@@ -15,5 +15,7 @@ end
 10.times do Story.create(title: Faker::DcComics.title, synopsis: Faker::Lorem.paragraph, published?: true, user_id: rand(1..10), additional_detail: Faker::Lorem.sentence)
 end
 
+10.times do Section.create(published?: false, story_id: rand(1..10))
+end
 
-5.times do Submission.create(subtitle: Faker::Lorem.sentence, summary: Faker::Lorem.paragraph, content: Faker::Lorem.paragraphs(3), user_id: Faker::Number.between(1,20), section_id: 1)
+50.times do Submission.create(subtitle: Faker::Lorem.sentence, summary: Faker::Lorem.paragraph, content: Faker::Lorem.paragraphs(3), user_id: rand(1..10), section_id: rand(1..10), winner?: false)

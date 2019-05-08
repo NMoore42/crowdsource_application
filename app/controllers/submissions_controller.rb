@@ -16,8 +16,7 @@ end
 def create
   #authorize helper method
     @submission = Submission.new(submission_params)
-    @submission.save
-    if @submission.valid?
+    if @submission.save
       redirect_to submission_path(@submission)
     else
       @error = @submission.errors.full_messages

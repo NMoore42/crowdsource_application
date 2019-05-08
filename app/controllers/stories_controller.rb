@@ -17,8 +17,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-    if @story.valid?
-      @story.save
+    if @story.save
       redirect_to @story
     else
       render :new

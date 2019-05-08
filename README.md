@@ -29,3 +29,5 @@ Things you may want to cover:
 Things to do:
 
 -Need to update votes controller, create method, to include correct re-direct route. NM 08MAY2019
+
+-Need to uncomment second condition in winning_submission? under votes model when ready to go live.  Currently commented out so method can be tested without having to build 10 follows per story.  NM 08MAY2019
