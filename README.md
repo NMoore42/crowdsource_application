@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+
+Things to do:
+
+-Need to update votes controller, create method, to include correct re-direct route. NM 08MAY2019
