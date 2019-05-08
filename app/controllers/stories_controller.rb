@@ -17,7 +17,6 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-
     if @story.valid?
       @story.save
       @section = Section.create(story_id: @story.id, published?: false)

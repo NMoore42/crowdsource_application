@@ -5,12 +5,16 @@ class FollowsController < ApplicationController
   end
 
   def create
-    @follow = Follow.new(follow_params)
-    if @follow.save
-      #do something
+    if logged_in?
+      create_follow
     else
       redirect_to login_path
     end
+  end
+
+  #Helper method for #create
+  def create_follow
+    Follow.create(follow_params)
   end
 
   private
