@@ -14,6 +14,7 @@ class Vote < ApplicationRecord
   def cannonize_submission
     self.submission.update(winner?: true)
     self.section.update(published?: true)
+    Section.create(story_id: self.story.id, published?: false)
   end
 
 
