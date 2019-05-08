@@ -18,23 +18,21 @@ class VotesController < ApplicationController
 
  ############ Helper Methods ##############
 
-  #Helper for #create_vote
-  def cannonize
-    if winning_submission?
-      cannonize_submission
-    end
-  end
-
   #Helper for #create
   def create_vote
-    if !following?
+    if !following_story?
       Follow.create(user_id: session[:user_id], story_id: get_story_id)
     end
     Vote.create(vote_params)
     cannonize
   end
 
-
+  #Helper for #create_vote
+  def cannonize
+    if winning_submission?
+      cannonize_submission
+    end
+  end
 
   private
 

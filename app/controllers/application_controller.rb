@@ -12,11 +12,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-
-  # def following_story?
-  #
-  # end
-
   # def authorize!
   #   if !logged_in?
   #     flash[:message] = "Sorry, you need to be logged in to do that."
