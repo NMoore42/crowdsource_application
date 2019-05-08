@@ -8,11 +8,11 @@
 
 require 'faker'
 
-# 10.times do
-#   User.create(username: Faker::Name.name)
-# end
+10.times do
+  User.create(username: Faker::Name.name, password: "pw")
+end
 
-10.times do Story.create(title: Faker::DcComics.title, synopsis: Faker::Lorem.paragraph, published?: true, user_id: 15, additional_detail: Faker::Lorem.sentence)
+10.times do Story.create(title: Faker::DcComics.title, synopsis: Faker::Lorem.paragraph, published?: true, user_id: rand(1..10), additional_detail: Faker::Lorem.sentence)
 end
 
 

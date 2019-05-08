@@ -5,11 +5,11 @@ class Story < ApplicationRecord
   belongs_to :author, class_name: :User, foreign_key: :user_id
   # self.table_name = :stories
   validates :title, presence: true
-  validates :title, length: { minimum: 2}
-  validates :title, length: { maximum: 50}
+#  validates :title, length: { minimum: 2}
+  #validates :title, length: { maximum: 50}
   validates :synopsis, presence: true
-  validates :synopsis, length: { minimum: 50 }
-  validates :synopsis, length: { maximum: 300 }
+#  validates :synopsis, length: { minimum: 50 }
+  #validates :synopsis, length: { maximum: 300 }
 
 
   def self.recent

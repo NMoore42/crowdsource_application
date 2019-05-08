@@ -3,9 +3,9 @@ class Submission < ApplicationRecord
   has_many :votes
   has_many :voters, through: :votes
 
-  validates :subtitle, presence: true, :subtitle, length: { maximum: 50 }
-  validates :summary, presence: true, uniqueness: true, :summary, length: { maximum: 500 }
-  validates :content, presence: true, uniqueness: true, :content, length: { minimum: 250 }
+  validates :subtitle, presence: true, length: { maximum: 50 }
+  validates :summary, presence: true, uniqueness: true, length: { maximum: 500 }
+  validates :content, presence: true, uniqueness: true, length: { minimum: 250 }
 
 
 end

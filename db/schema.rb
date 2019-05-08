@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_174542) do
+ActiveRecord::Schema.define(version: 2019_05_08_140941) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
@@ -20,9 +20,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_174542) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "subtitle"
-    t.text "summary"
-    t.text "content"
     t.boolean "published?"
     t.integer "story_id"
     t.datetime "created_at", null: false
@@ -47,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_174542) do
     t.integer "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "winner?"
   end
 
   create_table "users", force: :cascade do |t|
