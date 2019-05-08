@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  # before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create]
 
 
 
@@ -33,6 +33,6 @@ class StoriesController < ApplicationController
   end
 
   def require_login
-    return head(:forbidden) unless session.include? :user_id
+    redirect_to login_path unless session.include? :user_id
   end
 end
