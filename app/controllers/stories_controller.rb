@@ -17,13 +17,9 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-<<<<<<< HEAD
-    if @story.save
-=======
     if @story.valid?
       @story.save
       @section = Section.create(story_id: @story.id, published?: false)
->>>>>>> jake_day3
       redirect_to @story
     else
       render :new
