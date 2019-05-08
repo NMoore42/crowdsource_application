@@ -6,5 +6,5 @@ Followers: <%= @story.followers.count %>
 <br>
 <br>
 <% @story.sections.each do |section| %>
-<li> <%=link_to section.title, section_path(section) %> </li>
+<li> <%=link_to 'Section 1', section_path(section) %> </li>
 <% end %>

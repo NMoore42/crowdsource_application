@@ -19,6 +19,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     if @story.valid?
       @story.save
+      @section = Section.create(story_id: @story.id, published?: false)
       redirect_to @story
     else
       render :new
@@ -29,6 +30,7 @@ class StoriesController < ApplicationController
   private
 
   def story_params
+    params[:story][:user_id] = current_user.id
     params.require(:story).permit(:title, :synopsis, :additional_detail, :published?, :user_id)
   end
 
