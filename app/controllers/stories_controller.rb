@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  # before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create]
 
 
 
@@ -17,7 +17,13 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
+<<<<<<< HEAD
     if @story.save
+=======
+    if @story.valid?
+      @story.save
+      @section = Section.create(story_id: @story.id, published?: false)
+>>>>>>> jake_day3
       redirect_to @story
     else
       render :new
@@ -28,10 +34,11 @@ class StoriesController < ApplicationController
   private
 
   def story_params
+    params[:story][:user_id] = current_user.id
     params.require(:story).permit(:title, :synopsis, :additional_detail, :published?, :user_id)
   end
 
   def require_login
-    return head(:forbidden) unless session.include? :user_id
+    redirect_to login_path unless session.include? :user_id
   end
 end
