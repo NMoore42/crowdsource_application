@@ -8,8 +8,8 @@ class Submission < ApplicationRecord
   validates :summary, presence: true, uniqueness: true#, length: { maximum: 500 }
   validates :content, presence: true, uniqueness: true#, length: { minimum: 250 }
 
-  def self.top_submissions
-    Submission.joins(:votes).group("submissions.id").order("count(votes.id) DESC")
+  def voted?(current_user)
+    self.voters.include?(current_user)
   end
 
 end

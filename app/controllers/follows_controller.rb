@@ -14,7 +14,8 @@ class FollowsController < ApplicationController
 
   #Helper method for #create
   def create_follow
-    Follow.create(follow_params)
+    @follow = Follow.create(follow_params)
+    redirect_to story_path(@follow.story_id)
   end
 
   private

@@ -1,4 +1,4 @@
-
+require 'pry'
 
 class VotesController < ApplicationController
 
@@ -20,17 +20,28 @@ class VotesController < ApplicationController
 
   #Helper for #create
   def create_vote
-    if !following_story?
+    @vote = Vote.create(vote_params)
+    if !following_story
       Follow.create(user_id: session[:user_id], story_id: get_story_id)
     end
-    Vote.create(vote_params)
     cannonize
+    redirect_to section_path(@vote.submission.section.id)
+  end
+
+
+  #Helper for #create_vote
+  def following_story
+    Submission.find(params[:vote][:submission_id]).section.story.followers.include?(current_user)
+  end
+
+  def get_story_id
+    Submission.find(params[:vote][:submission_id]).section.story.id
   end
 
   #Helper for #create_vote
   def cannonize
-    if winning_submission?
-      cannonize_submission
+    if @vote.winning_submission?
+      @vote.cannonize_submission
     end
   end
 

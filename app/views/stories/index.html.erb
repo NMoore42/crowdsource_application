@@ -5,17 +5,28 @@
 
 <h3></h3>
 <h3>Top Stories</h3>
-<% @stories.top_stories do |story| %>
+<% @stories.top_stories.each do |story| %>
 <li><%= link_to story.title, story_path(story) %> <br>
 <%= story.synopsis %>
 </li>
 <% end %>
-
+<br>
 ********************************************
-
+<br>
 <h3>New Stories</h3>
 <% @stories.recent.each do |story| %>
 <li><%= link_to story.title, story_path(story) %> <br>
   <%= story.synopsis %>
 </li>
+<% end %>
+<br>
+********************************************
+<br>
+<% if logged_in? %>
+<h3>My Stories</h3>
+  <% current_user.followed_stories.top_stories.each do |story| %>
+    <li><%= link_to story.title, story_path(story) %> <br>
+      <%= story.synopsis %>
+    </li>
+  <% end %>
 <% end %>

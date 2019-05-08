@@ -16,12 +16,5 @@ class Vote < ApplicationRecord
     self.section.update(published?: true)
   end
 
-  def following_story?
-    self.story.followers.include?(User.find(current_user.id)) #change to just current_user?
-  end
-
-  def get_story_id
-    self.section.story_id
-  end
 
 end

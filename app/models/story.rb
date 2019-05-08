@@ -17,7 +17,11 @@ class Story < ApplicationRecord
   end
 
   def self.top_stories
-    Story.joins(:follows).group("story.id").order("count(followers.id) DESC")
+    Story.all.sort_by {|story| -story.follows.count}.first(5)
+  end
+
+  def following_story?(current_user)
+    self.followers.include?(current_user)
   end
 
 
