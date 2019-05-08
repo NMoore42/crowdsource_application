@@ -8,7 +8,7 @@ class VotesController < ApplicationController
 
 
   def create
-    if following_story?
+    if logged_in?
       create_vote
     else
       redirect_to login_path
@@ -27,9 +27,11 @@ class VotesController < ApplicationController
 
   #Helper for #create
   def create_vote
+    if !following?
+      Follow.create(user_id: session[:user_id], story_id: get_story_id)
+    end
     Vote.create(vote_params)
     cannonize
-    #redirect_to !!!! Need page route here !!!!
   end
 
 

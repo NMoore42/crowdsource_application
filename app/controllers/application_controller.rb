@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  helper_method :current_user, :logged_in
 
 
   def current_user
@@ -12,9 +12,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def following_story?
 
-  end
+  # def following_story?
+  #
+  # end
 
   # def authorize!
   #   if !logged_in?

@@ -20,4 +20,8 @@ class Vote < ApplicationRecord
     self.story.followers.include?(User.find(current_user.id)) #change to just current_user?
   end
 
+  def get_story_id
+    self.section.story_id
+  end
+
 end
