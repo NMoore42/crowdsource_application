@@ -7,13 +7,13 @@ class Vote < ApplicationRecord
 
   def winning_submission?
     story_follows = self.story.follows.count
-    submission_likes = self.submission.votes.count
-    submission_likes.to_f / story_follows.to_f > 0.5 #&& story_follows > 10
+    submission_votes = self.submission.votes.count
+    submission_votes.to_f / story_follows.to_f > 0.5 #&& story_follows > 10
   end
 
   def cannonize_submission
-    self.submission.winner? = true
-    self.section.published? = true
+    self.submission.update(winner?: true)
+    self.section.update(published?: true)
   end
 
 end

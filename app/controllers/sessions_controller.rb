@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  def new
+  def login
   end
 
   def create
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user.id)
     else
       @errors = ["Invalid credentials, please try again"]
-      render :new
+      render :login
     end
   end
 

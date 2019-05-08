@@ -1,3 +1,5 @@
+
+
 class VotesController < ApplicationController
 
   def new
@@ -11,7 +13,7 @@ class VotesController < ApplicationController
       if winning_submission?
         cannonize_submission
       end
-      #redirect_to !!!! Need page route here !!!!
+      redirect_to !!!! Need page route here !!!!
     else
       redirect_to login_path
     end

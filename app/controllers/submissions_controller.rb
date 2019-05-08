@@ -1,20 +1,20 @@
 class SubmissionsController < ApplicationController
 
-def index
-  @submissions = Submission.all
-end
+  def index
+    @submissions = Submission.all
+  end
 
-def show
-  @submission = Submission.find(params[:id])
-end
+  def show
+    @submission = Submission.find(params[:id])
+  end
 
-def new
-  @submission = Submission.new
-end
+  def new
+    @submission = Submission.new
+  end
 
 
-def create
-  #authorize helper method
+  def create
+    #authorize helper method
     @submission = Submission.new(submission_params)
     if @submission.save
       redirect_to submission_path(@submission)
@@ -23,12 +23,13 @@ def create
       render :new
     end
   end
-end
 
 
 
-private
+  private
 
-def submission_params
-  params.require(:submission).permit(:subtitle, :summary, :content, :user_id, :section_id, :winner?)
+  def submission_params
+    params.require(:submission).permit(:subtitle, :summary, :content, :user_id, :section_id, :winner?)
+  end
+
 end

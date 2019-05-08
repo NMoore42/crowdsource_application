@@ -19,3 +19,7 @@ end
 end
 
 50.times do Submission.create(subtitle: Faker::Lorem.sentence, summary: Faker::Lorem.paragraph, content: Faker::Lorem.paragraphs(3), user_id: rand(1..10), section_id: rand(1..10), winner?: false)
+end
+
+30.times do Follow.create(user_id: rand(1..10), story_id: rand(1..10))
+end

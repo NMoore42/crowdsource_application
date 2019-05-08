@@ -1,5 +1,6 @@
 class Submission < ApplicationRecord
   belongs_to :author, class_name: :User, foreign_key: :user_id
+  belongs_to :section
   has_many :votes
   has_many :voters, through: :votes
 
