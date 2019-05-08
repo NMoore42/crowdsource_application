@@ -17,3 +17,5 @@ Rails.application.routes.draw do
 
 
 end
+
+# <% <%= current_user ? <a href="/logout"></a> : <a href="/login"></a>%> %>
