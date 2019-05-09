@@ -16,6 +16,7 @@ class SubmissionsController < ApplicationController
 
   def create
     #authorize helper method
+    @section = Section.find(params[:section_id])
     @submission = Submission.new(submission_params)
     if @submission.save
       redirect_to story_section_submission_path(@submission.section.story, @submission.section, @submission)
@@ -30,6 +31,9 @@ class SubmissionsController < ApplicationController
   private
 
   def submission_params
+    params[:submission][:winner] = false
+    params[:submission][:user_id] = current_user.id
+    params[:submission][:section_id] = @section.id
     params.require(:submission).permit(:subtitle, :summary, :content, :user_id, :section_id, :winner?)
   end
 
