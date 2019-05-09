@@ -1,5 +1,3 @@
-<h1>Login</h1>
-
 <% if @errors %>
   <% @errors.each do |e| %>
     <p><%= e %></p>
@@ -10,14 +8,20 @@
   <h5>You are currently logged in as <%= current_user.username %>.</h5>
   <h6>Would you like to <%= link_to "log out?", logout_path, method: :delete %></h6>
 <% else %>
-  <%= form_tag '/login' do %>
-    <%= text_field_tag 'username', nil, placeholder: 'Username' %><br>
-    <!-- REMINDER: Never name an input field 'password_digest', use 'password' instead! -->
-    <%= password_field_tag 'password', nil, placeholder: 'Password' %><br>
-    <%= submit_tag 'Log Me In!' %>
-  <% end %>
+  <div class="container spacer my-column">
+    <div class="navbar-brand collabowrite-title">CollaboWrite</div>
+    <%= form_tag '/login', class: "form-signin my-column" do %>
+      <h2 class="form-signin-heading">Login</h2>
+      <label for="username" class="sr-only">Username</label>
+      <%= text_field_tag 'username', nil, placeholder: 'Username', class: "form-control" %><br>
+      <!-- REMINDER: Never name an input field 'password_digest', use 'password' instead! -->
+      <label for="password" class="sr-only">Password</label>
+      <%= password_field_tag 'password', nil, placeholder: 'Password', class: "form-control" %><br>
+      <%= submit_tag 'Sign in', class: "btn btn-lg btn-primary btn-block" %>
+    <% end %>
+  </div>
 <% end %>
 
 <br>
 <br>
-<h5>Don't have an account? <%= link_to "Sign up here", register_path %></h5>
+<h5 class="register">Don't have an account? <%= link_to "Sign up here", register_path %></h5>
