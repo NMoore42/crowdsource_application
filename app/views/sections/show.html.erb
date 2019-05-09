@@ -1,13 +1,20 @@
+<% if !@section.published? %>
+  <h2><%= link_to "Create Submission", new_story_section_submission_path(@section.story, @section)%></h2>
+<% end %>
+
 <% @section.order_submissions.each do |submission| %>
   <br>
-  <h5><%= link_to submission.subtitle, submission_path(submission) %><br>
-    <h6><%= submission.summary %></h6> <br>
-    Votes: <%= submission.votes.count  %>
+  <h5><%= link_to submission.subtitle, story_section_submission_path(@section.story, @section, submission) %><br>
+    <h6><%= submission.summary %></h6>
+    <p>Votes: <%= submission.votes.count  %></p>
   </h5>
-  <% if submission.voted?(current_user) %>
-    <p>Voted</p>
-  <% else %>
-    <%= button_to "Vote for Submission", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => submission.id}}, :method => :post %>
+  <% if logged_in? %>
+    <% if submission.voted?(current_user) %>
+      <p>Voted</p>
+    <% else %>
+      <%= button_to "Vote for Submission", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => submission.id}}, :method => :post %>
+    <% end %>
+    <br>
   <% end %>
   <br>
 <% end %>

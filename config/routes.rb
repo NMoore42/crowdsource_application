@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   resources :follows
-  resources :sections
-  resources :stories
-  resources :submissions
+  #resources :sections
+  resources :stories do
+      resources :sections do
+        resources :submissions
+      end
+  end
+  #resources :submissions
   resources :users, only: [ :create, :destroy, :show]
   resources :votes
   resources :sessions, only: [:destroy]

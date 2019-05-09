@@ -10,6 +10,7 @@ class SubmissionsController < ApplicationController
 
   def new
     @submission = Submission.new
+    @section = Section.find(params[:section_id])
   end
 
 
@@ -17,7 +18,7 @@ class SubmissionsController < ApplicationController
     #authorize helper method
     @submission = Submission.new(submission_params)
     if @submission.save
-      redirect_to submission_path(@submission)
+      redirect_to story_section_submission_path(@submission.section.story, @submission.section, @submission)
     else
       @error = @submission.errors.full_messages
       render :new
