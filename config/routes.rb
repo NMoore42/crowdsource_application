@@ -8,16 +8,17 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   resources :follows
-  #resources :sections
+  get '/stories/all', to: 'stories#all', as: 'all'
+  get '/stories/:id/full', to: 'stories#full', as: 'full'
   resources :stories do
       resources :sections do
         resources :submissions
       end
   end
-  #resources :submissions
   resources :users, only: [ :create, :destroy, :show]
   resources :votes
   resources :sessions, only: [:destroy]
+
 
 
 end

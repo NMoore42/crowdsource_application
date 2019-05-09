@@ -34,6 +34,11 @@ class Story < ApplicationRecord
     pub_section.submissions.find {|submission| submission.winner?}
   end
 
+  def self.recently_updated
+    Story.all.sort_by do |story|
+      story.updated_at
+    end
+  end
 
 
 

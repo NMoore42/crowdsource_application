@@ -1,0 +1,10 @@
+<h1><%= @story.title %></h1>
+Testing
+<% @story.sections.each do |section| %>
+  <% if section.published? == true %>
+    <h3> <%=link_to "Section #{@story.section_by_time_stamp(section)}:", section_path(section) %>
+       <%=  section.subtitle %>
+    by <%=link_to section.author, user_path(user) %> </h3>
+    <p><%= section.content %></p>
+  <% end %>
+<% end %>
