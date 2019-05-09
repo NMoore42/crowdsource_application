@@ -1,16 +1,21 @@
-<h1>Create A New Story</h1>
-
-<%= form_for @story do |f| %>
-  <%= f.label 'Title' %>
-  <%= f.text_field :title %><br>
-  <br>
-  <%= f.label 'Synopsis' %>
-  <%= f.text_area :synopsis %><br>
-  <br>
-  <%= f.label 'Notes' %>
-  <%= f.text_area :additional_detail %><br>
-  <br>
-  <%= f.submit 'Submit' %>
+<%= form_for @story, :html => {class: "form-signin my-column"} do |f| %>
+  <h2 class="form-signin-heading">Create a new story</h2>
+  <div class="form-group">
+    <%= f.label 'Title' %>
+    <%= f.text_field :title, class: "form-control" %><br>
+  </div>
+    <br>
+  <div class="form-group">
+    <%= f.label 'Synopsis' %>
+    <%= f.text_area :synopsis, class: "form-control" %>
+  </div>
+    <br>
+    <div class="form-group">
+      <%= f.label 'Notes' %>
+      <%= f.text_area :additional_detail, class: "form-control" %>
+    </div>
+    <br>
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>
 <br>
 <br>
