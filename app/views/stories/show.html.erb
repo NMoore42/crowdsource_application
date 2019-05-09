@@ -23,7 +23,7 @@ Followers: <%= @story.followers.count %>
 <br>
 <% if logged_in? %>
   <% if @story.following_story?(current_user) %>
-    <p>You are currently following this story.</p>
+    <p>You are 1 of <%= @story.followers.count %> following this story.</p>
   <% else %>
     <%= button_to "Join Story", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post %>
   <% end %>

@@ -1,4 +1,10 @@
-<h2><%= link_to "Create Submission", new_story_section_submission_path(@section.story, @section)%></h2>
+<% if logged_in? %>
+  <% if !@section.published? %>
+    <h2><%= link_to "Create Submission", new_story_section_submission_path(@section.story, @section)%></h2>
+  <% end %>
+<% else %>
+  <h2><%= link_to "Create Submission", login_path %></h2>
+<% end %>
 <p><%= link_to "Back", story_path(@section.story) %></p>
 
 <% @section.order_submissions.each do |submission| %>
