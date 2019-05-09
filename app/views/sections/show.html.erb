@@ -1,6 +1,5 @@
-<% if !@section.published? %>
-  <h2><%= link_to "Create Submission", new_story_section_submission_path(@section.story, @section)%></h2>
-<% end %>
+<h2><%= link_to "Create Submission", new_story_section_submission_path(@section.story, @section)%></h2>
+<p><%= link_to "Back", story_path(@section.story) %></p>
 
 <% @section.order_submissions.each do |submission| %>
   <br>

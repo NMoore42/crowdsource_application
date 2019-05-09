@@ -8,7 +8,7 @@ Followers: <%= @story.followers.count %>
 <h2>Published Sections:</h2>
 <% @story.sections.each do |section| %>
   <% if section.published? == true %>
-    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_path(@story, section) %> </li>
+    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_submission_path(@story, section, @story.get_published_submission(section)) %> </li>
   <% end %>
 <% end %>
 <br>

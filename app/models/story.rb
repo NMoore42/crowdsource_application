@@ -29,6 +29,13 @@ class Story < ApplicationRecord
     section_number = sorted_sections.index(section_instance) + 1
   end
 
+  def get_published_submission(section_instance)
+    pub_section = self.sections.find {|section| section == section_instance}
+    pub_section.submissions.find {|submission| submission.winner?}
+  end
+
+
+
 
 
 end
