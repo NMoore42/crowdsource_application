@@ -1,23 +1,25 @@
-<%= form_for @story, :html => {class: "form-signin my-column"} do |f| %>
+<div class="container spacer my-column">
+  <%= form_for @story, :html => {class: "form-signin"} do |f| %>
   <h2 class="form-signin-heading">Create a new story</h2>
   <div class="form-group">
     <%= f.label 'Title' %>
-    <%= f.text_field :title, class: "form-control" %><br>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-    <br>
+
   <div class="form-group">
     <%= f.label 'Synopsis' %>
     <%= f.text_area :synopsis, class: "form-control" %>
   </div>
-    <br>
-    <div class="form-group">
-      <%= f.label 'Notes' %>
-      <%= f.text_area :additional_detail, class: "form-control" %>
-    </div>
-    <br>
-    <%= f.submit 'Submit', class: "btn btn-primary" %>
-<% end %>
-<br>
-<br>
 
-<%= link_to 'Cancel', stories_path %>
+  <div class="form-group">
+    <%= f.label 'Notes' %>
+    <%= f.text_area :additional_detail, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit 'Submit', class: "btn btn-primary create-btn" %>
+  <% end %>
+  <div class="cancel-container">
+    <%= link_to 'Cancel', stories_path, class: "btn btn-danger btn-sm btn-cancel" %>
+  </div>
+
+</div>
