@@ -1,7 +1,10 @@
 <h1>Individual User Page</h1>
 <br>
-<h2>This is the user page for: <%= @user.username %></h2>
-<%= button_to "Log Out", { action: "destroy", controller: "sessions" }, method: "delete" %>
+
+<div class="card">
+  <h2 class="card-header">This is the user page for: <%= @user.username %></h2>
+  <%= button_to "Log Out", { action: "destroy", controller: "sessions" }, method: "delete" %>
+</div>
 <br>
 <br>
 <br>
