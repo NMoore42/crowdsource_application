@@ -18,31 +18,38 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/stories">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="/stories/new">Create Story</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user ? current_user.username : "Please Login" %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/users/<%="#{current_user&.id}"%>">My Profile</a>
-              <!-- <a class="dropdown-item" href="#">Login</a> -->
-              <% if !!current_user == true %>
-                <a class="dropdown-item" href="/logout" data-method="delete">Logout</a>
-              <% else %>
-                <% if !current_page?(:controller => 'sessions', :action => 'login') %>
-                  <a class="dropdown-item" href="/login">Login</a>
-                <% end %>
-              <% end %>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          <% if logged_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <% if !!current_user == true %>
+                    <a class="dropdown-item" href="/users/<%="#{current_user&.id}"%>">My Profile</a>
+                  <% end %>
+                  <!-- <a class="dropdown-item" href="#">Login</a> -->
+                  <% if !!current_user == true %>
+                    <a class="dropdown-item" href="/logout" data-method="delete">Logout</a>
+                  <% else %>
+                    <% if !current_page?(:controller => 'sessions', :action => 'login') %>
+                      <a class="dropdown-item" href="/login">Login</a>
+                    <% end %>
+                  <% end %>
+                </div>
+            </li>
+          <% else %>
+            <% if !current_page?(:controller => 'sessions', :action => 'login') %>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login / Register</a>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </nav>

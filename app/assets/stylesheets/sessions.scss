@@ -1,3 +1,22 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.my-column {
+  max-width: 330px;
+  margin: auto;
+}
+
+.register {
+  text-align: center;
+}
+
+.spacer{
+  margin-top: 5vh;
+}
+
+.collabowrite-title{
+  font-size: 40px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 5vh;
+}
