@@ -1,7 +1,7 @@
 <% if @errors %>
-  <% @errors.each do |error|  %>
-  <%= error %>
-  <% end %>
+<% @errors.each do |error|  %>
+<%= error %>
+<% end %>
 <% end %>
 
 <style media="screen">
@@ -10,14 +10,17 @@
   }
 </style>
 
-<h1>New Submission!</h1>
-<%= link_to "Back to Submissions", story_section_path(@section.story, @section) %>
-<%= form_for @submission, url: story_section_submissions_path(@section.story, @section) do |f| %>
-  <p><%= f.label :subtitle%>
+<h1 class="badge badge-secondary">New Submission!</h1>
+<%= form_for @submission do |f| %>
+  <p><%= f.label "Subtitle"%>
   <%= f.text_field :subtitle %></p><br>
-  <p><%= f.label :summary %>
+  <p><%= f.label :user_id %>
+  <%= f.collection_select :user_id, User.all, :id, :name  %></p><br>
+  <p><%= f.label :section_id %>
+  <%= f.collection_select :section_id, Section.all, :id, :subtitle %></p><br>
+  <p><%= f.label "Summary" %>
   <%= f.text_field :summary %></p><br>
-  <p><%= f.label :content %>
+  <p><%= f.label "Content" %>
   <%= f.text_area :content %></p><br>
   <%= f.submit %>
 
