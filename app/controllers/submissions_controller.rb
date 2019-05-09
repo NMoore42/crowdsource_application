@@ -31,10 +31,11 @@ class SubmissionsController < ApplicationController
   private
 
   def submission_params
-    params[:submission][:winner] = false
+    p params
+    params[:submission][:winner?] = false
     params[:submission][:user_id] = current_user.id
     params[:submission][:section_id] = @section.id
-    params.require(:submission).permit(:subtitle, :summary, :content, :user_id, :section_id, :winner?)
+    params.require(:submission).permit(:subtitle, :summary, :content, :user_id, :section_id, :winner?, :end_story)
   end
 
 end

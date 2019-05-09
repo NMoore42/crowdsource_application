@@ -19,6 +19,8 @@
   <%= f.text_field :summary %></p><br>
   <p><%= f.label :content %>
   <%= f.text_area :content %></p><br>
+  <p><%= f.label :end_story %>
+  <%= f.check_box :end_story, checked: false %><br><br>
   <%= f.submit %>
 
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_140941) do
+ActiveRecord::Schema.define(version: 2019_05_09_211519) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_05_08_140941) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "winner?"
+    t.boolean "end_story"
   end
 
   create_table "users", force: :cascade do |t|
