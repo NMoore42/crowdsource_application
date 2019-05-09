@@ -8,7 +8,9 @@ Followers: <%= @story.followers.count %>
 <h2>Published Sections:</h2>
 <% @story.sections.each do |section| %>
   <% if section.published? == true %>
-    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", section_path(section) %> </li>
+    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}:", section_path(section) %>
+       <%=  section.subtitle %>
+    by <%=link_to section.author, user_path(user) %> </li>
   <% end %>
 <% end %>
 <br>
@@ -22,7 +24,7 @@ Followers: <%= @story.followers.count %>
 <br>
 <br>
 <% if @story.following_story?(current_user) %>
-  <p>You are currently following this story.</p>
+  <p>You are helping tell this story.</p>
 <% else %>
   <%= button_to "Join Story", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post %>
 <% end %>

@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   resources :follows
   resources :sections
+  get '/stories/all', to: 'stories#all', as: 'all'
+  get '/stories/:id/full', to: 'stories#full', as: 'full'
   resources :stories
   resources :submissions
   resources :users, only: [ :create, :destroy, :show]
   resources :votes
   resources :sessions, only: [:destroy]
+
 
 
 end

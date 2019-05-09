@@ -15,6 +15,14 @@ class StoriesController < ApplicationController
     @story = Story.new
   end
 
+  def full
+    @story = Story.find(params[:id])
+  end
+
+  def all
+    @stories = Story.all
+  end
+
   def create
     @story = Story.new(story_params)
     if @story.valid?

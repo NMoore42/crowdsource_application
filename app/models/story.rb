@@ -29,6 +29,12 @@ class Story < ApplicationRecord
     section_number = sorted_sections.index(section_instance) + 1
   end
 
+  def self.recently_updated
+    Story.all.sort_by do |story|
+      story.updated_at
+    end
+  end
+
 
 
 end

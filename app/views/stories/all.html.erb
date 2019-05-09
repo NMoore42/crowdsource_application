@@ -1,0 +1,6 @@
+<h3>All Stories</h3>
+<% @stories.sort.reverse.each do |story| %>
+<p><%= link_to story.title, story_path(story) %>
+Updated: <%= story.updated_at.strftime("%B %e, %Y at %I:%M %p") %>
+</p>
+<% end %>
