@@ -10,29 +10,42 @@
 </div>
 <br>
 <br>
-<h2>Published Sections:</h2>
-<% @story.sections.each do |section| %>
-  <% if section.published? == true %>
-    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_submission_path(@story, section, @story.get_published_submission(section)) %> </li>
+<% if @story.published? %>
+
+  <% @story.get_full_published_story.each do |submission| %>
+    <p><%= submission.content %></p>
   <% end %>
-<% end %>
-<br>
-<br>
-<h2>Working Section:</h2>
-<% @story.sections.each do |section| %>
-  <% if section.published? == false %>
-    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_path(@story, section) %> </li>
+
+<% else %>
+
+  <h2>Published Sections:</h2>
+  <% @story.sections.each do |section| %>
+    <% if section.published? == true %>
+      <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_submission_path(@story, section, @story.get_published_submission(section)) %> </li>
+    <% end %>
   <% end %>
-<% end %>
-<br>
-<br>
-<% if logged_in? %>
-  <% if @story.following_story?(current_user) %>
-    <p>You are 1 of <%= @story.followers.count %> following this story.</p>
-  <% else %>
-    <%= button_to "Join Story", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post %>
+  <br>
+  <br>
+  <h2>Working Section:</h2>
+  <% @story.sections.each do |section| %>
+    <% if section.published? == false %>
+      <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_path(@story, section) %> </li>
+    <% end %>
   <% end %>
+  <br>
+  <br>
+  <% if logged_in? %>
+    <% if @story.following_story?(current_user) %>
+      <p>You are 1 of <%= @story.followers.count %> following this story.</p>
+    <% else %>
+      <%= button_to "Join Story", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post %>
+    <% end %>
+  <% end %>
+  <br>
+  <br>
+
+
 <% end %>
-<br>
-<br>
+
+
 <p><%=link_to "Back", stories_path %></p>

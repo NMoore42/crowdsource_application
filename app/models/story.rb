@@ -2,6 +2,7 @@ class Story < ApplicationRecord
   has_many :sections
   has_many :follows
   has_many :followers, through: :follows
+  has_many :submissions, through: :sections
   belongs_to :author, class_name: :User, foreign_key: :user_id
   # self.table_name = :stories
   validates :title, presence: true
@@ -38,6 +39,10 @@ class Story < ApplicationRecord
     Story.all.sort_by do |story|
       story.updated_at
     end
+  end
+
+  def get_full_published_story
+    self.submissions.select { |submission| submission.winner? }
   end
 
 
