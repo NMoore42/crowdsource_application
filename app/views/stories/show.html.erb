@@ -5,8 +5,19 @@
 Followers: <%= @story.followers.count %>
 <br>
 <br>
+<h2>Published Sections:</h2>
 <% @story.sections.each do |section| %>
-<li> <%=link_to 'Section 1', section_path(section) %> </li>
+  <% if section.published? == true %>
+    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", section_path(section) %> </li>
+  <% end %>
+<% end %>
+<br>
+<br>
+<h2>Working Section:</h2>
+<% @story.sections.each do |section| %>
+  <% if section.published? == false %>
+    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", section_path(section) %> </li>
+  <% end %>
 <% end %>
 <br>
 <br>
@@ -15,3 +26,6 @@ Followers: <%= @story.followers.count %>
 <% else %>
   <%= button_to "Join Story", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post %>
 <% end %>
+<br>
+<br>
+<p><%=link_to "Back", stories_path %></p>

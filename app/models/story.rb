@@ -24,6 +24,10 @@ class Story < ApplicationRecord
     self.followers.include?(current_user)
   end
 
+  def section_by_time_stamp(section_instance)
+    sorted_sections = self.sections.sort_by {|section| section.created_at}
+    section_number = sorted_sections.index(section_instance) + 1
+  end
 
 
 

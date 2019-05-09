@@ -7,8 +7,8 @@ class Section < ApplicationRecord
     self.submissions.sort_by {|submission| submission.votes.count}
   end
 
-  def voted?(current_user)
-    self.voters.include?(current_user)
-  end
+
+
+
 
 end

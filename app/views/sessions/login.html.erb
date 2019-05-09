@@ -6,9 +6,18 @@
   <% end %>
 <% end %>
 
-<%= form_tag '/login' do %>
-  <%= text_field_tag 'username', nil, placeholder: 'Username' %><br>
-  <!-- REMINDER: Never name an input field 'password_digest', use 'password' instead! -->
-  <%= password_field_tag 'password', nil, placeholder: 'Password' %><br>
-  <%= submit_tag 'Log Me In!' %>
+<% if logged_in? %>
+  <h5>You are currently logged in as <%= current_user.username %>.</h5>
+  <h6>Would you like to <%= link_to "log out?", logout_path, method: :delete %></h6>
+<% else %>
+  <%= form_tag '/login' do %>
+    <%= text_field_tag 'username', nil, placeholder: 'Username' %><br>
+    <!-- REMINDER: Never name an input field 'password_digest', use 'password' instead! -->
+    <%= password_field_tag 'password', nil, placeholder: 'Password' %><br>
+    <%= submit_tag 'Log Me In!' %>
+  <% end %>
 <% end %>
+
+<br>
+<br>
+<h5>Don't have an account? <%= link_to "Sign up here", register_path %></h5>

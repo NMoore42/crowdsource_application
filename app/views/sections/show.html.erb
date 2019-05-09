@@ -1,11 +1,13 @@
 <% @section.order_submissions.each do |submission| %>
-  <li>item<%= link_to submission.subtitle, submission_path(submission) %><br>
-    <%= submission.summary %> <br>
+  <br>
+  <h5><%= link_to submission.subtitle, submission_path(submission) %><br>
+    <h6><%= submission.summary %></h6> <br>
     Votes: <%= submission.votes.count  %>
-  </li>
+  </h5>
   <% if submission.voted?(current_user) %>
     <p>Voted</p>
   <% else %>
     <%= button_to "Vote for Submission", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => submission.id}}, :method => :post %>
   <% end %>
+  <br>
 <% end %>

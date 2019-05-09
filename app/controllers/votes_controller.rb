@@ -25,7 +25,7 @@ class VotesController < ApplicationController
       Follow.create(user_id: session[:user_id], story_id: get_story_id)
     end
     cannonize
-    redirect_to section_path(@vote.submission.section.id)
+    redirect_to request.referrer
   end
 
 
