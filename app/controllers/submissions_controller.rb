@@ -16,14 +16,14 @@ class SubmissionsController < ApplicationController
 
   def create
     #authorize helper method
-    # @section = Section.find(params[:section_id])
-    # @submission = Submission.new(submission_params)
-    # if @submission.save
-    #   redirect_to story_section_submission_path(@submission.section.story, @submission.section, @submission)
-    # else
-    #   @error = @submission.errors.full_messages
-    #   render :new
-    # end
+    @section = Section.find(params[:section_id])
+    @submission = Submission.new(submission_params)
+    if @submission.save
+      redirect_to story_section_submission_path(@submission.section.story, @submission.section, @submission)
+    else
+      @error = @submission.errors.full_messages
+      render :new
+    end
   end
 
 
