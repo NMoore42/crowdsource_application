@@ -99,6 +99,7 @@ Submission.create(
   content: "The history of Graces is a sad one.  A few hundred years ago, a man named Thwin overthrew the royal family of Hyrule. The king was killed while trying to protect his throne.  Only the queen, her three children, and a few servants escaped. Thwin ruled for a long time and his wife bore many sons. One of them was named heir, who was called Rugo. Shortly after taking over, Rugo had heard of the legend of the hero.  The Hylian man who saved Hyrule from evil every time it seemed to happen.  Rugo did not want any kind of hero coming up to him, so he ordered his guards to capture as many Hylians as they could in attempt to wipe them out, specifically the royal family and hero's bloodline. Many people believe that he had accomplished this, since Hylians were never seen again after only a few years.  However, what had actually happened was they all grouped together and fled from the mainland of Hyrule. Eventually, they settled in the area that is now known as the village of Graces.  After a long while, Rugo had called off the search, thinking they had been long gone. After that, a group of Hylians created a merchant group to keep a steady economy.  They wore dark cloaks to hide their long and pointed ears, which were the main feature of a Hylian, out of fear that there were still people hunting for Hylians.  The merchants ended up doubling as spies to see what else was going on in the world.  Besides the valuable merchandise, they also brought back information.",
   user_id: 2,
   section_id: 1,
+  end_story: false,
   winner?: true
 )
 
@@ -133,6 +134,7 @@ Submission.create(
   content: "This is how we know that the current dictator is a woman known as Freja. She had no children, at least not yet. Rumor is that she had recently become engaged. We also now know that technology in Castle Town has been rapidly evolving, as the architects there were building tall, metal buildings and had lighting that wasn't provided by candle-light.",
   user_id: 5,
   section_id: 2,
+  end_story: false,
   winner?: true
 )
 
@@ -167,6 +169,7 @@ Submission.create(
   content: "Like most people around my age or a little younger, my parents had died in the monster raid nine years ago.  My father was a village protector, and my mother was a medicine maker.  Well, actually, my father was just assumed dead since he had been missing since the monster raid.  My mother, though, was dead for a fact. Since then, I had been living with my Aunt Olah and Uncle Paul.  Dan was their only child.  Aunt Olah had wanted more, but I have a feeling she quickly changed her mind after taking me in.",
   user_id: 2,
   section_id: 3,
+  end_story: false,
   winner?: true
 )
 
@@ -201,6 +204,7 @@ Submission.create(
   content: "After about an hour, Tara and I had given up on helping Brooke with schoolwork and started talking about our futures.  Specifically, we were talking about the eighteenth birthday tradition, which was when a couple announces that they've been dating.  Initially, it's kept a secret between the couple and their families, and maybe close friends, until the oldest turns eighteen.  It had become such a part of Graces tradition to the point that it's looked down upon if the person isn't in a relationship.  I personally hated it, but I had no power to remove it, nor would I ever will.",
   user_id: 5,
   section_id: 4,
+  end_story: false,
   winner?: false
 )
 
@@ -224,6 +228,7 @@ Submission.create(
   content: "The scene starts off dark and grey.  It then turns to pitch black.  Fade out.",
   user_id: 4,
   section_id: 4,
+  end_story: false,
   winner?: false
 )
 
@@ -242,6 +247,7 @@ Submission.create(
   content: "Zelda went for a swim right after eating.  She did not make it.",
   user_id: 1,
   section_id: 4,
+  end_story: false,
   winner?: false
 )
 
@@ -256,6 +262,7 @@ Submission.create(
   content: "After a long while, Rugo had called off the search, thinking they had been long gone. After that, a group of Hylians created a merchant group to keep a steady economy.  They wore dark cloaks to hide their long and pointed ears, which were the main feature of a Hylian, out of fear that there were still people hunting for Hylians.  The merchants ended up doubling as spies to see what else was going on in the world.  Besides the valuable merchandise, they also brought back information.",
   user_id: 3,
   section_id: 4,
+  end_story: false,
   winner?: false
 )
 
@@ -388,6 +395,7 @@ Submission.create(
   content: "This is how we know that the current dictator is a woman known as Freja. She had no children, at least not yet. Rumor is that she had recently become engaged. We also now know that technology in Castle Town has been rapidly evolving, as the architects there were building tall, metal buildings and had lighting that wasn't prggovided by candle-light.",
   user_id: 5,
   section_id: 6,
+  end_story: false,
   winner?: true
 )
 
@@ -422,6 +430,7 @@ Submission.create(
   content: "Like most people around my age or a little younger, my parents had died in the monster raid nine years ago.  My father was a village protector, and my mother was a medicine maker.  Well, actually, my father was just asffsumed dead since he had been missing since the monster raid.  My mother, though, was dead for a fact. Since then, I had been living with my Aunt Olah and Uncle Paul.  Dan was their only child.  Aunt Olah had wanted more, but I have a feeling she quickly changed her mind after taking me in.",
   user_id: 2,
   section_id: 7,
+  end_story: false,
   winner?: true
 )
 
@@ -452,10 +461,11 @@ Vote.create(
 
 Submission.create(
   subtitle: 'HP, Part 4',
-  summary: 'Hpf Stuff and more.',
-  content: "After about an hour, Tara and I had given up on helping Brooke with schoolwork and started talking about our futures.  Specifically, we were talking about the eighteenth birthday tradition, which was when a cousple affsnnounces that they've been dating.  Initially, it's kept a secret between the couple and their families, and maybe close friends, until the oldest turns eighteen.  It had become such a part of Graces tradition to the point that it's looked down upon if the person isn't in a relationship.  I personally hated it, but I had no power to remove it, nor would I ever will.",
+  summary: 'This is an ending submission.  Harry Potter looks around to find himself alone, haunted by his gleeful years of practicing the dark arts.',
+  content: "Harry stepped out into the open air, letting the cold warm his soul. His dark pupils shown bright with rage and contempt as he realized his only true friend was death.",
   user_id: 5,
   section_id: 8,
+  end_story: true,
   winner?: false
 )
 
@@ -479,6 +489,7 @@ Submission.create(
   content: "The scene startffs off dark and grey.  It then turns to pitch black.  Fade out.",
   user_id: 4,
   section_id: 8,
+  end_story: false,
   winner?: false
 )
 
@@ -497,6 +508,7 @@ Submission.create(
   content: "Zelda ffwent for a swim right after eating.  She did not make it.",
   user_id: 1,
   section_id: 8,
+  end_story: false,
   winner?: false
 )
 
@@ -511,6 +523,7 @@ Submission.create(
   content: "After fffa long while, Rugo had called off the search, thinking they had been long gone. After that, a group of Hylians created a merchant group to keep a steady economy.  They wore dark cloaks to hide their long and pointed ears, which were the main feature of a Hylian, out of fear that there were still people hunting for Hylians.  The merchants ended up doubling as spies to see what else was going on in the world.  Besides the valuable merchandise, they also brought back information.",
   user_id: 3,
   section_id: 8,
+  end_story: false,
   winner?: false
 )
 
