@@ -1,3 +1,19 @@
 // Place all the styles related to the Stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#story_synopsis {
+  height: 30vh;
+}
+
+.create-btn {
+  width: 100%;
+}
+
+.btn-cancel {
+  width: 100px;
+}
+
+.cancel-container {
+  margin: 30px auto;
+  width: 100px;
+}
