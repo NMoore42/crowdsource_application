@@ -1,8 +1,6 @@
 class StoriesController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
-
-
   def index
     @stories = Story.all
   end
