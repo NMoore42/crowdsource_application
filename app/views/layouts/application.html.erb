@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light space">
+    <nav class="navbar nav-padding navbar-expand-lg navbar-light bg-light space">
       <a class="navbar-brand" href="/stories">CollaboWrite</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,9 +30,6 @@
               </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <% if !!current_user == true %>
-                    <a class="dropdown-item" href="/users/<%="#{current_user&.id}"%>">My Profile</a>
-                  <% end %>
                   <!-- <a class="dropdown-item" href="#">Login</a> -->
                   <% if !!current_user == true %>
                     <a class="dropdown-item" href="/logout" data-method="delete">Logout</a>
