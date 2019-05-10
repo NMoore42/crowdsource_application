@@ -8,50 +8,65 @@
       <h5 class="card-title">Notes</h5>
       <div class="card-text"><%= @story.additional_detail %></div>
       <div class="">
-        <div class="">Join Story</div>
-        <div class="">Followers: <%= @story.followers.count %></div>
+        <% if logged_in? %>
+          <% if @story.following_story?(current_user) %>
+            <button class="btn btn-primary" disabled>You are 1 of <%= @story.followers.count %> following this story.</button>
+          <% else %>
+            <%= button_to "Join Story | Followers: #{@story.followers.count}", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post, class: "btn btn-primary" %>
+
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
     <br>
     <br>
     <% if @story.published? %>
-
-    <% @story.get_full_published_story.each do |submission| %>
-    <p><%= submission.content %></p>
-    <% end %>
-
+      <div class="card shadow story-card">
+        <h2 class="card-header story-title">Published Story:</h2>
+        <div class="story-container">
+          <% @story.get_full_published_story.each do |submission| %>
+            <p class="story-content"><%= submission.content %></p>
+          <%end %>
+        </div>
+      </div>
     <% else %>
+    <div class="card shadow story-card">
+      <h2 class="card-header story-title">Published Sections:</h2>
+      <div class="list-group">
+        <% @story.sections.each do |section| %>
+          <% if section.published? == true %>
+            <a> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_submission_path(@story, section, @story.get_published_submission(section)), class: "list-group-item list-group-item-action" %> </a>
+          <% end %>
+        <% end %>
+      </div>
 
-    <h2>Published Sections:</h2>
-    <% @story.sections.each do |section| %>
-    <% if section.published? == true %>
-    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_submission_path(@story, section, @story.get_published_submission(section)) %> </li>
-    <% end %>
-    <% end %>
+    </div>
+
     <br>
     <br>
-    <h2>Working Section:</h2>
-    <% @story.sections.each do |section| %>
-    <% if section.published? == false %>
-    <li> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_path(@story, section) %> </li>
-    <% end %>
-    <% end %>
+    <div class="card shadow story-card">
+      <h2 class="card-header story-title">Working Section:</h2>
+      <div class="list-group">
+        <% @story.sections.each do |section| %>
+          <% if section.published? == false %>
+            <a> <%=link_to "Section #{@story.section_by_time_stamp(section)}", story_section_path(@story, section), class: "list-group-item list-group-item-action" %> </a>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <br>
     <br>
     <% if logged_in? %>
     <% if @story.following_story?(current_user) %>
-    <p>You are 1 of <%= @story.followers.count %> following this story.</p>
     <% else %>
     <%= button_to "Join Story", {:controller => "follows", :action => "create", :follow => {:user_id => current_user.id, :story_id => @story.id}}, :method => :post %>
     <% end %>
     <% end %>
-    <br>
-    <br>
+
 
 
     <% end %>
 
-
-    <p><%=link_to "Back", stories_path %></p>
+    <%=button_to "<- Back", stories_path, method: "get", class: "btn btn-outline-primary back-button" %>
 </div>

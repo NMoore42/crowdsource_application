@@ -13,6 +13,37 @@
   width: 100px;
 }
 
+.story-homepage-top {
+  display: flex;
+  flex-direction: row;
+
+  .section-header {
+    text-align: center;
+  }
+
+  .top-left {
+    width: 45%;
+    margin: 30px auto;
+  }
+  .top-right {
+    width: 45%;
+    margin: 30px auto;
+  }
+}
+
+.border-bottom {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.125);
+}
+
+.synopsis-style {
+  padding: 15px;
+}
+
+.separator-bar {
+  height: 3px;
+  background-color: #f7f7f7;
+}
+
 .cancel-container {
   margin: 30px auto;
   width: 100px;
@@ -23,7 +54,26 @@
   margin: 0 auto;
 }
 
+.section-card-wide {
+  width: 95vw;
+  margin: 0 auto;
+}
+
 .story-title {
   font-size: 2em;
 
+}
+
+.back-button {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+
+.story-container {
+  padding: 15px;
+}
+
+.story-content {
+  padding: 10px;
 }

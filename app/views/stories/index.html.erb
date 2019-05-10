@@ -1,41 +1,64 @@
+<div class="story-homepage-top">
+
+  <div class="top-left">
+    <div class="card shadow">
+      <h3 class="card-header section-header">Top Stories</h3>
+      <div class="list-group">
+      <% @stories.top_stories.each do |story| %>
+        <div class="border-bottom"><%= link_to "#{story.title} | #{story.followers.count} CollaboWriters", story_path(story), class: "list-group-item list-group-item-action list-group-item-light" %>
+          <div class="synopsis-style">
+            <%= story.synopsis %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="top-right">
+    <div class="card shadow">
+      <h3 class="card-header section-header">New Stories</h3>
+      <div class="list-group">
+        <% @stories.recent.each do |story| %>
+          <div class="border-bottom"><%= link_to "#{story.title} | #{story.followers.count} CollaboWriters", story_path(story), class: "list-group-item list-group-item-action list-group-item-light" %>
+            <div class="synopsis-style">
+              <%= story.synopsis %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
 
 <% if logged_in? %>
-<h3>My Stories</h3>
-  <% current_user.followed_stories.top_stories.each do |story| %>
-    <li><%= link_to story.title, story_path(story) %>
-         (<%= story.followers.count %> collabowriters) <br>
-      <%= story.synopsis %>
-    </li>
-  <% end %>
-<% end %>
-<br>
-********************************************
-<br>
-<h3>Top Stories</h3>
-<% @stories.top_stories.each do |story| %>
-<li><%= link_to story.title, story_path(story) %>
-  (<%= story.followers.count %> collabowriters) <br>
-<%= story.synopsis %>
-</li>
-<% end %>
-<br>
-********************************************
-<br>
-<h3>New Stories</h3>
-<% @stories.recent.each do |story| %>
-<li><%= link_to story.title, story_path(story) %> <br>
-  <%= story.synopsis %>
-</li>
-<% end %>
-<br>
-********************************************
-<br>
-<h3>Recently Updated</h3>
+  <div class="card shadow section-card-wide">
+    <h3 class="card-header section-header">My Stories</h3>
+    <% current_user.followed_stories.top_stories.each do |story| %>
+        <div class="border-bottom"><%= link_to "#{story.title} | #{story.followers.count} CollaboWriters", story_path(story), class: "list-group-item list-group-item-action list-group-item-light" %>
+          <div class="synopsis-style">
+            <%= story.synopsis %>
+          </div>
+        </div>
+    <% end %>
+  </div>
 
-<% @stories.recently_updated.last(5).each do |story| %>
-<li><%= link_to story.title, story_path(story) %> <br>
-  <%= story.synopsis %>
-</li>
+
 <% end %>
 
-<%= link_to 'All Stories', all_path %>
+<br>
+  <div class="card shadow section-card-wide">
+    <h3 class="card-header section-header">Recently Updated</h3>
+    <% @stories.recently_updated.last(5).each do |story| %>
+    <div class="border-bottom"><%= link_to "#{story.title} | #{story.followers.count} CollaboWriters", story_path(story), class: "list-group-item list-group-item-action list-group-item-light" %>
+      <div class="synopsis-style">
+        <%= story.synopsis %>
+      </div>
+    </div>
+    <% end %>
+  </div>

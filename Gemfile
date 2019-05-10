@@ -9,6 +9,8 @@ gem 'bootstrap', '~> 4.1.3'
 
 gem 'jquery-rails'
 
+gem 'bootstrap-toggle-rails', '~> 2.2', '>= 2.2.1.0'
+
 ##################################################################
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

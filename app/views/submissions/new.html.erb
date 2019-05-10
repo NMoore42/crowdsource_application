@@ -1,27 +1,52 @@
-<% if @errors %>
-  <% @errors.each do |error|  %>
-  <%= error %>
-  <% end %>
-<% end %>
+<div class="body-container">
 
-<style media="screen">
-  .field_with_errors {
-    border: 2px red solid;
-  }
-</style>
+  <div class="container spacer my-column">
+    <% if @errors %>
+      <% @errors.each do |error|  %>
+      <%= error %>
+      <% end %>
+    <% end %>
 
-<h1>New Submission!</h1>
-<%= link_to "Back to Submissions", story_section_path(@section.story, @section) %>
-<%= form_for @submission, url: story_section_submissions_path(@section.story, @section) do |f| %>
-  <p><%= f.label :subtitle%>
-  <%= f.text_field :subtitle %></p><br>
-  <p><%= f.label :summary %>
-  <%= f.text_field :summary %></p><br>
-  <p><%= f.label :content %>
-  <%= f.text_area :content %></p><br>
-  <p><%= f.label :end_story %>
-  <%= f.check_box :end_story, checked: false %><br><br>
-  <%= f.submit %>
+    <style media="screen">
+      .field_with_errors {
+        border: 2px red solid;
+      }
+    </style>
 
-<% end %>
-<br>
+    <%= form_for @submission, url: story_section_submissions_path(@section.story, @section), :html => {class: "form-signin"} do |f| %>
+      <h2 class="form-signin-heading">Create Submission</h2>
+      <div class="form-group">
+        <%= f.label :subtitle%>
+        <%= f.text_field :subtitle, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :summary %>
+        <%= f.text_field :summary, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <div class="form-control custom-control custom-switch">
+          <%= f.check_box :end_story, checked: false, class: "custom-control-input", id: "customSwitch1" %>
+          <%= f.label :end_story, class: "custom-control-label", for: "customSwitch1" %>
+        </div>
+      </div>
+
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+        <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+      </div>
+
+      <%= f.submit %>
+
+    <% end %>
+  </div>
+
+  <%= button_to "<- Back", story_section_path(@section.story, @section), method: "get", class: "btn btn-outline-primary back-button" %>
+
+</div>

@@ -1,25 +1,30 @@
-<% if logged_in? %>
-  <% if !@section.published? %>
-    <h2><%= link_to "Create Submission", new_story_section_submission_path(@section.story, @section)%></h2>
-  <% end %>
-<% else %>
-  <h2><%= link_to "Create Submission", login_path %></h2>
-<% end %>
-<p><%= link_to "Back", story_path(@section.story) %></p>
+<div class="body-container">
 
-<% @section.order_submissions.each do |submission| %>
-  <br>
-  <h5><%= link_to submission.subtitle, story_section_submission_path(@section.story, @section, submission) %><br>
-    <h6><%= submission.summary %></h6>
-    <p>Votes: <%= submission.votes.count  %></p>
-  </h5>
-  <% if logged_in? %>
-    <% if submission.voted?(current_user) %>
-      <p>Voted</p>
-    <% else %>
-      <%= button_to "Vote for Submission", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => submission.id}}, :method => :post %>
-    <% end %>
-    <br>
+  <% @section.order_submissions.each do |submission| %>
+    <div class="card shadow story-card submission-card">
+      <h5 class="card-header story-title"><%= link_to submission.subtitle, story_section_submission_path(@section.story, @section, submission) %></h5>
+      <div class="card-body">
+        <div class="card-text"><%= submission.summary %></div>
+        <% if logged_in? %>
+          <% if submission.voted?(current_user) %>
+            <p>Voted</p>
+          <% else %>
+            <%= button_to "Vote for Submission | Votes: #{submission.votes.count}", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => submission.id}}, :method => :post, class: "btn btn-primary btn-sm" %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
   <% end %>
-  <br>
-<% end %>
+
+  <% if logged_in? %>
+    <% if !@section.published? %>
+      <h2><%= button_to "Create a new submission", new_story_section_submission_path(@section.story, @section), method: "get", class: "btn btn-primary create-sub-button"%></h2>
+    <% end %>
+  <% else %>
+    <h2><%= button_to "Create a new submission", login_path, method: "get", class: "btn btn-outline-primary create-sub-button" %></h2>
+  <% end %>
+
+  <%= button_to "<- Back", story_path(@section.story), method: "get", class: "btn btn-outline-primary back-button" %>
+
+</div>
