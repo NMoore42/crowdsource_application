@@ -5,11 +5,13 @@
       <div class="card-text"><%= @submission.content %></div>
     </div>
     <div class="sub-vote-button">
-      <% if logged_in? %>
-        <% if @submission.voted?(current_user) %>
-          <button type="button" class="btn btn-primary btn-sm" disabled>Voted</button>
-        <% else %>
-          <%= button_to "Vote for Submission", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => @submission.id}}, :method => :post, class: "btn btn-primary btn-sm" %>
+      <% if !@submission.winner? %>
+        <% if logged_in? %>
+          <% if @submission.voted?(current_user) %>
+            <button type="button" class="btn btn-primary btn-sm" disabled>Voted</button>
+          <% else %>
+            <%= button_to "Vote for Submission", {:controller => "votes", :action => "create", :vote => {:user_id => current_user.id, :submission_id => @submission.id}}, :method => :post, class: "btn btn-primary btn-sm" %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
