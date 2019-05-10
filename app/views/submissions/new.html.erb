@@ -1,6 +1,6 @@
 <div class="body-container">
 
-  <div class="container spacer my-column">
+  <div class="container spacer submission-column">
     <% if @errors %>
       <% @errors.each do |error|  %>
       <%= error %>
@@ -37,16 +37,14 @@
         </div>
       </div>
 
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-        <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-      </div>
 
-      <%= f.submit %>
+      <%= f.submit 'Submit', class: "btn btn-primary create-btn" %>
+      <div class="cancel-container">
+        <%= button_to "Cancel", story_section_path(@section.story, @section), method: "get", class: "btn btn-danger btn-sm btn-cancel" %>
+      </div>
 
     <% end %>
   </div>
 
-  <%= button_to "<- Back", story_section_path(@section.story, @section), method: "get", class: "btn btn-outline-primary back-button" %>
 
 </div>

@@ -9,6 +9,11 @@
   height: 30vh;
 }
 
+.submission-column {
+  max-width: 60%;
+  min-width: 500px;
+}
+
 .create-btn {
   width: 100%;
 }
@@ -90,4 +95,8 @@
 
 .submission-card {
   margin-bottom: 15px;
+}
+
+.sub-vote-button {
+  margin: 0 0 30px 30px;
 }

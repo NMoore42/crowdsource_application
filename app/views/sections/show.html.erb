@@ -22,7 +22,7 @@
       <h2><%= button_to "Create a new submission", new_story_section_submission_path(@section.story, @section), method: "get", class: "btn btn-primary create-sub-button"%></h2>
     <% end %>
   <% else %>
-    <h2><%= button_to "Create a new submission", login_path, method: "get", class: "btn btn-outline-primary create-sub-button" %></h2>
+    <h2><%= button_to "Create a new submission", login_path, method: "get", class: "btn btn-primary create-sub-button" %></h2>
   <% end %>
 
   <%= button_to "<- Back", story_path(@section.story), method: "get", class: "btn btn-outline-primary back-button" %>
